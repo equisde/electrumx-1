@@ -1606,6 +1606,32 @@ class CanadaeCoin(AuxPowMixin, Coin):
     RPC_PORT = 34330
     REORG_LIMIT = 1000
 
+class Foxy(Coin):
+    NAME = "Foxy"
+    SHORTNAME = "FOXY"
+    NET = "mainnet"
+    XPUB_VERBYTES = bytes.fromhex("0488b21e")
+    XPRV_VERBYTES = bytes.fromhex("0488ade4")
+    P2PKH_VERBYTE = bytes.fromhex("23")  # Address starts with a D
+    P2SH_VERBYTES = [bytes.fromhex("5F")]
+    WIF_BYTE = bytes.fromhex("9E")  # WIF starts with a 6
+    GENESIS_HASH = ('00000b40f53c46a522a77f5f594de42a'
+                    'e9d2d8d710317c22958fc05150cd2a6d')
+    DESERIALIZER = lib_tx.DeserializerTxTime
+    TX_COUNT = 329
+    RPC_PORT = 58376
+    ESTIMATE_FEE = 0.00001
+    RELAY_FEE = 0.00001
+    DAEMON = daemon.FakeEstimateFeeDaemon
+    TX_COUNT_HEIGHT = 245
+    TX_PER_BLOCK = 2
+
+    @classmethod
+    def header_hash(cls, header):
+        '''Given a header return the hash.'''
+        import tribus_hash
+        return tribus_hash.getPoWHash(header)
+
 
 class Denarius(Coin):
     NAME = "Denarius"
