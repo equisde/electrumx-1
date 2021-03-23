@@ -1612,7 +1612,7 @@ class Foxy(Coin):
     NET = "mainnet"
     XPUB_VERBYTES = bytes.fromhex("0488b21e")
     XPRV_VERBYTES = bytes.fromhex("0488ade4")
-    P2PKH_VERBYTE = bytes.fromhex("23")  # Address starts with a D
+    P2PKH_VERBYTE = bytes.fromhex("24")  # Address starts with a D
     P2SH_VERBYTES = [bytes.fromhex("5F")]
     WIF_BYTE = bytes.fromhex("9E")  # WIF starts with a 6
     GENESIS_HASH = ('00000b40f53c46a522a77f5f594de42a'
@@ -2137,7 +2137,32 @@ class ColossusXT(Coin):
         import quark_hash
         return quark_hash.getPoWHash(header)
 
+class HWW(Coin):
 
+    NAME = "HWW"
+    SHORTNAME = "HWW"
+    NET = "mainnet"
+    XPUB_VERBYTES = bytes.fromhex("0488b21e")
+    XPRV_VERBYTES = bytes.fromhex("0488ade4")
+    P2PKH_VERBYTE = bytes.fromhex("28")
+    P2SH_VERBYTES = [bytes.fromhex("30")]
+    WIF_BYTE = bytes.fromhex("2e")
+    GENESIS_HASH = (
+        '00000ce4f9a14676fb7919e8f3d71a735ef26a6306f593e169a244d76c3c9b64')
+    DAEMON = daemon.DashDaemon
+    TX_COUNT = 257
+    TX_COUNT_HEIGHT = 255
+    TX_PER_BLOCK = 1
+    RPC_PORT = 9333
+    REORG_LIMIT = 1000
+    SESSIONCLS = DashElectrumX
+    DAEMON = daemon.DashDaemon
+
+    @classmethod
+    def header_hash(cls, header):
+        '''Given a header return the hash.'''
+        import quark_hash
+        return quark_hash.getPoWHash(header)
 class GoByte(Coin):
     NAME = "GoByte"
     SHORTNAME = "GBX"
