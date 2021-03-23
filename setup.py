@@ -18,12 +18,12 @@ setuptools.setup(
                       'plyvel', 'pylru', 'aiohttp >= 2'],
     packages=setuptools.find_packages(include=('electrumx*',)),
     description='ElectrumX Server',
-    author='Neil Booth',
-    author_email='kyuupichan@gmail.com',
+    author='Parallax',
+    author_email='rbert379@gmail.com',
     license='MIT Licence',
-    url='https://github.com/kyuupichan/electrumx',
+    url='https://github.com/equisde/electrumx-1',
     long_description='Server implementation for the Electrum protocol',
-    download_url=('https://github.com/kyuupichan/electrumX/archive/'
+    download_url=('https://github.com/equisde/electrumx-1/archive/'
                   f'{version}.tar.gz'),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
